@@ -820,6 +820,14 @@ jobs:
           cpu_count: 2
           diff_aware: false
 
+  lint-yaml:
+    name: Lint YAML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - run: pip install yamllint -q
+      - run: yamllint .gitlab-ci.yml .github/workflows/*.yml .github/*.yml .github/ISSUE_TEMPLATE/*.yml .github/chainguard/*.yaml .pre-commit-config.yaml .prettierrc.yml .datadog-ci.datadog.yml static-analysis.datadog.yml
+
   check-licenses:
     name: Check licenses
     runs-on: ubuntu-latest
